@@ -36,4 +36,7 @@ public class ArrayBasedQuestion {
         Arrays.sort(squaredNum);
         return squaredNum;
     }
+
+
+
 }

@@ -36,7 +36,12 @@ public class ArrayBasedQuestion {
         Arrays.sort(squaredNum);
         return squaredNum;
     }
+    public void sortedSquaresFo(int[] nums) {
 
+        int[] squaredNum = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            squaredNum[i] = nums[i] * nums[i];
+        }
 
-
+    }
 }

@@ -87,5 +87,24 @@ public class ArrayBasedQuestion {
 
 return res;
     }
+    //two pointer approach using two pointer
+    int[] arr = { 2,7,11,15};
+    public static boolean twoSum(int[] arr, int target){
+        Arrays.sort(arr);
+        int i = 0;
+        int j = arr.length -1;
+        while(i<j){
+            int sum = arr[i] + arr[j];
+            if(sum == target){
+                return true;
+            }else if(sum>target){
+                j--;
+            }
+            else {
+                i++;
+            }
+        }
+        return false;
+    }
 
 }

@@ -87,7 +87,7 @@ public class ArrayBasedQuestion {
 
 return res;
     }
-    //two pointer approach using two pointer
+    //two sum approach using two pointer
     int[] arr = { 2,7,11,15};
     public static boolean twoSum(int[] arr, int target){
         Arrays.sort(arr);
@@ -142,6 +142,28 @@ return res;
             }
         }
         return result;
+    }
+    // 3sum problem where triplet is smaller than target
+    int countTriplets(int sum, int arr[]) {
+        Arrays.sort(arr);
+        int n = arr.length;
+        int count =0;
+        for(int i = 0;i<n-2;i++){
+            int left = i +1;
+            int right = n-1;
+            while(left<right){
+                int total = arr[i] + arr[left] + arr[right];
+                if(total < sum){
+                    count += right-left;
+                    left++;
+                } else {
+                    right--;
+                }
+
+            }
+        }
+        return count ;
+
     }
 
 }

@@ -165,5 +165,46 @@ return res;
         return count ;
 
     }
+    //Given an array of integers arr[]  and a number k. Return the maximum sum of a subarray of size k
+    public int maxSubarraySum(int[] arr, int k) {
+        int n = arr.length;
+        int low = 0;
+        int high = k-1; //cuz if k =2 then high would be indexed of 1
+        int sum =0;
+        for(int i =low; i<=high;i++){
+            sum = sum + arr[i];
+        }
+        int res = 0;
+        while(high<n){
+            res = Math.max(res,sum);
+            low++;
+            high++;
+            if(high == n){
+                break;
+            }
+            sum = sum - arr[low-1];
+            sum = sum + arr[high];
+        }
+        return res;
+    }
+    //minimum size subarray sum problem
+    public int minSubArrayLen(int target, int[] nums) {
+        int n = nums.length;
+        int low = 0;
+        int high = 0;
+        int sum = 0;
+        int res = Integer.MAX_VALUE;
+        while(high<n){
+            sum = sum + nums[high];
+            while(sum >=target){
+                int len = high - low + 1;
+                res  = Math.min(res,len);
+                sum = sum - nums[low];
+                low++;
+            }
+            high++;
+        }
+        return res==Integer.MAX_VALUE?0 : res;
+    }
 
 }

@@ -206,5 +206,23 @@ return res;
         }
         return res==Integer.MAX_VALUE?0 : res;
     }
+    public int longestKSubstr(String s, int k) {
+        Set<Character> set = new HashSet<>();
+        int low = 0;
+        int res = Integer.MIN_VALUE;
+        for(int high = 0; high<s.length(); high++){
+            char current = s.charAt(high);
+            while(set.contains(current)){
+                set.remove(s.charAt(low));
+                low++;
+            }
+            set.add(current);
+
+            int len = high - low +1;
+            res = Math.max(res,len);
+        }
+        return res == Integer.MIN_VALUE?-1:res;
+
+    }
 
 }

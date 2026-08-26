@@ -263,5 +263,27 @@ return res;
         }
         return res;
     }
+    // fruits in basket sum (similar to longest subarray at most k =2
+    public int totalFruit(int[] fruits) {
+        Map<Integer,Integer> map = new HashMap<>();
+        int low =0;
+        int k = 2;
+        int res = Integer.MIN_VALUE;
+        for(int high = 0; high<fruits.length; high++){
+            int highnum = fruits[high];
+            map.put(highnum,map.getOrDefault(highnum,0)+1);
+            while( map.size()>k){
+                int lownum = fruits[low];
+                map.put(lownum,map.get(lownum)-1);
+                if(map.get(lownum)==0){
+                    map.remove(lownum);
+                }
+                low++;
+            }
+            int len = high - low +1;
+            res = Math.max(res,len);
+        }
+        return res;
+    }
 
 }

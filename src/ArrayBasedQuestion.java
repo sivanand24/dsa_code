@@ -224,6 +224,7 @@ return res;
         return res == Integer.MIN_VALUE?-1:res;
 
     }
+    //rotating the array using the two pointer approach
     public void reverseArr(int[] nums,int left, int right){
         while(left<right){
             int temp = nums[left];
@@ -240,6 +241,27 @@ return res;
         reverseArr(nums,0,k-1);
         reverseArr(nums,k,n-1);
 
+    }
+    //longest substring with at most k unique problem
+    public int longestKSubstring(String s, int k) {
+        Map<Character,Integer> map = new HashMap<>();
+        int low  = 0;
+        int res  = Integer.MIN_VALUE;
+        for(int high = 0; high<s.length(); high++){
+            char  ch = s.charAt(high);
+            map.put(ch,map.getOrDefault(ch,0)+1);
+            while(map.size()>k){
+                char lowChar = s.charAt(low);
+                map.put(lowChar,map.get(lowChar)-1);
+                if(map.get(lowChar)==0){
+                    map.remove(lowChar);
+                }
+                low++;
+            }
+            int len = high -low +1;
+            res = Math.max(res, len);
+        }
+        return res;
     }
 
 }

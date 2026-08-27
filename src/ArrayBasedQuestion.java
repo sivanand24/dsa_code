@@ -285,5 +285,30 @@ return res;
         }
         return res;
     }
+    //longest repeating character replacement problem - important
+    public int characterReplacement(String s, int k) {
+        int[] count = new int[26];
+        int low = 0;
+        int res = Integer.MIN_VALUE;
+        int maxCount = 0;
+        for(int high =0;high<s.length();high++){
+            int highIndex = s.charAt(high) - 'A';
+            count[highIndex]++;
+            maxCount = Math.max(maxCount, count[highIndex]);
+            int len = high -low +1;
+            int diff = len - maxCount;
+            while(diff>k){
+                int lowIndex = s.charAt(low)- 'A';
+                count[lowIndex]--;
+                low++;
+                len = high -low +1;
+                diff = len - maxCount;
+
+            }
+            len  = high - low +1;
+            res = Math.max(res,len);
+        }
+        return res;
+    }
 
 }

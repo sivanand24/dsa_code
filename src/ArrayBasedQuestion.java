@@ -387,5 +387,43 @@ return res;
         }
         return true;
     }
+    // minimum window substring
+    public String minWindow(String s, String t) {
+        if(s.length()==0 || t.length()==0){
+            return "";
+        }
+        Map<Character ,Integer> need = new HashMap<>();
+        for(char c : t.toCharArray()){
+            need.put(c, need.getOrDefault(c,0) + 1);
+        }
+        Map<Character ,Integer> want = new HashMap<>();
+        int low = 0;
+        int reslow = -1;
+        int reshigh = -1;
+        int reslen = Integer.MAX_VALUE;
+        int have = 0;
+        int needCount = need.size();
+        for(int high = 0; high < s.length(); high++){
+            char c = s.charAt(high);
+            want.put(c ,want.getOrDefault(c,0) + 1 );
+            if(need.containsKey(c) && want.get(c).intValue() == need.get(c).intValue()){
+                have++;
+            }
+            while(have == needCount){
+                if((high - low + 1) < reslen){
+                    reslen = high - low + 1;
+                    reslow = low;
+                    reshigh = high;
+                }
+                char leftchar = s.charAt(low);
+                want.put(leftchar , want.getOrDefault(leftchar,0) -1);
+                if(need.containsKey(leftchar) && want.get(leftchar)<need.get(leftchar)){
+                    have--;
+                }
+                low++;
+            }
+        }
+        return reslen == Integer.MAX_VALUE? "" :s.substring(reslow, reshigh +1);
+    }
 
 }

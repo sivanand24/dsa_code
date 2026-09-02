@@ -49,6 +49,24 @@ public class LinkedListProblems {
         }
         return slow;
     }
+    // find the duplicate number in the array based linkedList
+    public int findDuplicate(int[] nums) {
+        int slow = 0;
+        int fast = 0;
+        while(true){
+            slow = nums[slow];
+            fast = nums[fast];
+            fast = nums[fast];
+            if(slow == fast){
+                slow = 0;
+                while(slow != fast){
+                    slow = nums[slow];
+                    fast = nums[fast];
+                }
+                return slow;
+            }
+        }
+    }
 
     private class ListNode {
         public ListNode next;

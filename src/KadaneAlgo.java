@@ -60,4 +60,49 @@ public class KadaneAlgo {
         }
         return res;
     }
+    // this is simpler version of maximum subarray sum with one deletion
+    public int maximumSum2(int[] arr) {
+        int nodelete = arr[0];
+        int ans = arr[0];
+        int onedelete = arr[0];
+        for(int i = 1;i<arr.length;i++){
+            onedelete = Math.max(nodelete,onedelete+arr[i]);
+            nodelete = Math.max(nodelete+arr[i],arr[i]);
+
+            ans  = Math.max(ans,Math.max(nodelete,onedelete));
+
+        }
+        return ans;
+    }
+    // maximum absolute sum of any subarray
+    public int maxsum(int[] nums){
+        int bestending = nums[0];
+        int ans = nums[0];
+        for(int i =1; i<nums.length;i++){
+            int v1 = bestending + nums[i];
+            int v2 = nums[i];
+            bestending = Math.max(v1,v2);
+            ans = Math.max(ans,bestending);
+        }
+        return ans;
+    }
+    public int minsum(int[] nums){
+        int bestending = nums[0];
+        int ans = nums[0];
+        for(int i =1;i<nums.length;i++){
+            int v1 = bestending + nums[i];
+            int v2 = nums[i];
+            bestending = Math.min(v1,v2);
+            ans = Math.min(ans,bestending);
+        }
+
+        return ans;
+    }
+    public int maxAbsoluteSum(int[] nums) {
+        int res = 0;
+        int max = maxsum(nums);
+        int min = minsum(nums);
+        res = Math.max(max,Math.abs(min));
+        return res;
+    }
 }

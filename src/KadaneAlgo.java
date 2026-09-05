@@ -105,4 +105,33 @@ public class KadaneAlgo {
         res = Math.max(max,Math.abs(min));
         return res;
     }
+    //maximum sum circular subarray
+    public int maxSubarraySumCircular(int[] nums) {
+        int total = nums[0];
+
+        int bestending = nums[0];
+        int maxSum = nums[0];
+
+        int currentMin = nums[0];
+        int minSum = nums[0];
+
+        for(int i = 1; i < nums.length; i++) {
+
+            total += nums[i];
+
+            bestending = Math.max(bestending + nums[i], nums[i]);
+            maxSum = Math.max(maxSum, bestending);
+
+            currentMin = Math.min(currentMin + nums[i], nums[i]);
+            minSum = Math.min(minSum, currentMin);
+        }
+
+        if (maxSum < 0) {
+            return maxSum;
+        }
+
+        int circularSum = total - minSum;
+
+        return Math.max(maxSum, circularSum);
+    }
 }

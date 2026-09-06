@@ -5,16 +5,14 @@ public class PrefixSumBasedProblem {
         for(int num : nums){
             sum = sum + num;
         }
-        if(sum==2){
-            return 0;
-        }
+
         int left = 0;
-        for(int i = 1; i< nums.length; i++){
-            left = left + nums[i-1];
-            int right = sum - left - nums[i];
+        for(int i = 0; i< nums.length; i++){
+            int right = sum - nums[i] - left;
             if(left == right){
                 return i;
             }
+            left = left + nums[i];
         }
         return -1;
     }

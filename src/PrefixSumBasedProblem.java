@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class PrefixSumBasedProblem {
 
     public int pivotIndex(int[] nums) {
@@ -15,5 +17,24 @@ public class PrefixSumBasedProblem {
             left = left + nums[i];
         }
         return -1;
+    }
+    //subarray sums divided by k prob
+    public int subarraysDivByK(int[] nums, int k) {
+        int count = 0;
+        int sum = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0,1);
+        for( int num : nums){
+            sum = sum + num;
+            int remainder = sum%k;
+            if(remainder < 0){
+                remainder = remainder + k;
+            }
+            if(map.containsKey(remainder)){
+                count = count + map.get(remainder);
+            }
+            map.put(remainder , map.getOrDefault(remainder, 0) + 1);
+        }
+        return count;
     }
 }

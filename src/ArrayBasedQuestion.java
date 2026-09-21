@@ -490,4 +490,14 @@ return res;
 
         return new String(chars);
     }
+    // remove duplicate element ||
+    public int removeDuplicates2(int[] nums) {
+        int k = 0;
+        for(int num : nums){
+            if(k<2 || num != nums[k -2] ){
+                nums[k++] = num;
+            }
+        }
+        return k;
+    }
 }

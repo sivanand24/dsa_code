@@ -1,3 +1,5 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 public class StackProblems {
@@ -31,5 +33,35 @@ public class StackProblems {
 
         }
         return stack.isEmpty();
+    }
+    //min stack problem
+    private Deque<Integer> stack;
+    private Deque<Integer> minStack;
+
+    public MinStack() {
+        stack = new ArrayDeque<>();
+        minStack = new ArrayDeque<>();
+
+    }
+
+    public void push(int value) {
+        stack.push(value);
+        minStack.push(minStack.isEmpty() ? value : Math.min(value, minStack.peek()));
+
+    }
+
+    public void pop() {
+        stack.pop();
+        minStack.pop();
+
+    }
+
+    public int top() {
+        return stack.peek();
+
+    }
+
+    public int getMin() {
+        return minStack.peek();
     }
 }

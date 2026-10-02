@@ -62,4 +62,26 @@ public class MathBasedSums {
     public boolean isPowerOfTwo2(int n) {
         return n > 0 && (n & (n - 1)) == 0;
     }
+    //smallest even multiple
+    public int smallestEvenMultiple(int n) {
+        if(n%2 != 0){
+            return n *2;
+        }
+        else if( n%2== 0){
+            return n;
+        }
+        return n;
+    }
+    //richest customer wealth
+    public int maximumWealth(int[][] accounts) {
+        int richest = 0;
+        for(int[] customer : accounts){
+            int wealth = 0;
+            for(int money : customer){
+                wealth = wealth + money;
+                richest = Math.max(richest , wealth);
+            }
+        }
+        return richest;
+    }
 }

@@ -84,4 +84,22 @@ public class MathBasedSums {
         }
         return richest;
     }
+    //row with maximum ones
+    public int[] rowAndMaximumOnes(int[][] mat) {
+        int maxOnes = -1;
+        int rowIdx = 0;
+        for(int i = 0; i < mat.length; i++){
+            int ones = 0;
+            for(int value : mat[i]){
+                if(value == 1){
+                    ones++;
+                }
+            }
+            if(ones > maxOnes){
+                maxOnes = ones;
+                rowIdx = i;
+            }
+        }
+        return new int[] {rowIdx , maxOnes};
+    }
 }

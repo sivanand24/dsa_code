@@ -26,4 +26,16 @@ public class StringBasedProblem {
         }
         return -1;
     }
+    //length of the last word
+    public int lengthOfLastWord(String s) {
+        int i = s.length() -1;
+        while( i>=0 && s.charAt(i) == ' '){
+            i--;
+        }
+        int j = i;
+        while( j>=0 && s.charAt(j) != ' '){
+            j--;
+        }
+        return i -j;
+    }
 }

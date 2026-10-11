@@ -68,4 +68,27 @@ public class StackProblems {
             return minStack.peek();
         }
     }
+    //baseball game
+    public int calPoints(String[] operations) {
+        Stack<Integer> stack = new Stack<>();
+        for(String op : operations){
+            if(op.equals("+")){
+                int sum = stack.get(stack.size() - 1) + stack.get(stack.size() - 2);
+                stack.push(sum);
+            } else if (op.equals("D")){
+                stack.push(stack.peek() * 2);
+            } else if(op.equals("C")){
+                stack.pop();
+            } else {
+                stack.push(Integer.parseInt(op));
+            }
+
+        }
+        int sum = 0;
+        for(int score : stack){
+            sum = sum + score;
+        }
+        return sum;
+
+    }
 }

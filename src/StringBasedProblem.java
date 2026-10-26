@@ -63,4 +63,16 @@ public class StringBasedProblem {
 
         return total;
     }
+    //2697. Lexicographically Smallest Palindrome
+    public String makeSmallestPalindrome(String s) {
+        char[] cs = s.toCharArray();
+        int i = 0;
+        int j = cs.length -1;
+        while(i <j){
+            cs[i] = cs[j] = (char) Math.min(cs[i], cs[j]);
+            i++;
+            j--;
+        }
+        return new String(cs);
+    }
 }

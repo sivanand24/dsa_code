@@ -113,4 +113,28 @@ public class StackProblems {
         }
         return res.reverse().toString();
     }
+    //next greatest element ||
+    public int[] nextGreaterElements(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(nums[n-1]);
+        for(int i =2*n-1; i>=0; i--){
+            {
+                int index = i%n;
+                while( !stack.empty() && stack.peek() <=nums[index]){
+                    stack.pop();
+                }
+                if(i<n){
+                    if(stack.empty()){
+                        res[index] = -1;
+                    } else {
+                        res[index] = stack.peek();
+                    }
+                }
+                stack.push(nums[index]);
+            }
+        }
+        return res;
+    }
 }

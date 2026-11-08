@@ -139,4 +139,17 @@ public class MathBasedSums {
         }
         return sum;
     }
+    //difference between element sum and digit sum
+    public int differenceOfSum(int[] nums) {
+        int elementSum =0;
+        int digitSum = 0;
+        for(int v : nums){
+            elementSum = elementSum + v;
+            while(v > 0){
+                digitSum = digitSum + v%10;
+                v /= 10;
+            }
+        }
+        return elementSum - digitSum;
+    }
 }

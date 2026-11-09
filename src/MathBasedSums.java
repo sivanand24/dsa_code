@@ -152,4 +152,18 @@ public class MathBasedSums {
         }
         return elementSum - digitSum;
     }
+    //if the game can be won
+    public boolean canAliceWin(int[] nums) {
+        int singleSum = 0;
+        int doubleSum = 0;
+        for(int x : nums){
+            if(x <10){
+                singleSum = singleSum + x;
+            }
+            else {
+                doubleSum = doubleSum + x;
+            }
+        }
+        return singleSum != doubleSum;
+    }
 }

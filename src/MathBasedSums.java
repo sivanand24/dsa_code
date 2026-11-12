@@ -182,4 +182,17 @@ public class MathBasedSums {
         }
         return false;
     }
+    //Sign of the Product of an Array
+    public int arraySign(int[] nums) {
+        int sign =1;
+        for(int n : nums){
+            if( n ==0){
+                return 0;
+            }
+            if( n <0){
+                sign *= -1;
+            }
+        }
+        return sign;
+    }
 }

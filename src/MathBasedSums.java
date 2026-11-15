@@ -195,4 +195,17 @@ public class MathBasedSums {
         }
         return sign;
     }
+    //Count the Digits That Divide a Number
+    public int countDigits(int num) {
+        int temp = num;
+        int count = 0;
+        while(temp >0){
+            int digit = temp %10;
+            if (num % digit == 0){
+                count += 1;
+            }
+            temp /= 10;
+        }
+        return count;
+    }
 }

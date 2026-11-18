@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class StringBasedProblem {
     //ramson note problem
@@ -96,5 +98,15 @@ public class StringBasedProblem {
             }
         }
         return ans;
+    }
+    //words containing the character
+    public List<Integer> findWordsContaining(String[] words, char x) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].indexOf(x) != -1) {
+                result.add(i);
+            }
+        }
+        return result;
     }
 }
